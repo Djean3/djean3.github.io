@@ -1,0 +1,21 @@
+# Site settings
+title: Armia Habib
+description: My personal webpage.
+# baseurl: "/particle" # the subpath of your site, e.g. /blog
+# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+url: armiadata.github.io
+
+# User settings
+username: Armia Habib
+user_description:
+user_title: Data Science Intern
+email: 	armiadata@gmail.com
+#twitter_username: ArmiaData
+github_username:  ArmiaData
+#gplus_username:  lorem_ipsum
+
+# Google-analytics
+google-analytics:
+  id: ""
+
+exclude: ['package.json', 'src' , 'node_modules']

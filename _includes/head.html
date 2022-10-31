@@ -8,7 +8,28 @@
 
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ <link rel="stylesheet" href="https://use.typekit.net/zci3qxl.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+<!--Hide the img -->
+<style>
+.myimgdivtoggle{display:none;}
+</style>
+
+<!--import jquery library-->	
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	
+<!--jquery function to view QR code on toggle-->
+	<script>
+		$(document).ready(function(){
+			$('.togglebtn').click(function(){
+				$('.myimgdivtoggle').toggle( "blind", 1000 );
+			});
+		});
+	</script>
+  
           
 </head>

@@ -4,6 +4,7 @@
 <!-- ✅ Checkboxes go here -->
 <div style="text-align:center; margin-bottom: 20px;">
   <strong>Filter by Type:</strong><br><br>
+  <label><input type="checkbox" class="project-filter" value="all" checked onclick="toggleAll(this)"> All</label>
   <label><input type="checkbox" class="project-filter" value="ds" checked> Data Science</label>
   <label><input type="checkbox" class="project-filter" value="viz" checked> Machine Learning</label>
   <label><input type="checkbox" class="project-filter" value="eda" checked> Deep Learning</label>
@@ -14,58 +15,50 @@
 
 
 <!-- ✨ Projects Begin -->
-
-<div class="user-projects project-card ds eda viz">
+<!-- 🧠 FIRES -->
+<div class="user-projects project-card ml">
   <div class="images-right">
-    <p><br></p>
+    <img alt="fires" src="{{ "/assets/img/fires.jpg" | prepend: site.baseurl }}" />
+  </div>
+  <div class="contents-left">
+    <h3>US Wildfires Machine Learning Project</h3>
+    <p><strong>Summary:</strong> Modeled wildfire characteristics such as size, duration, and regional variation using machine learning techniques to uncover hidden patterns.</p>
+    <p><strong>Tools:</strong> Python, Scikit-learn, Pandas</p>
+    <a class="project-link" href="https://github.com/Djean3/US-Wildfires">Check it out</a>
+  </div>
+</div>
+
+<!-- 🧠 Flights -->
+<div class="user-projects project-card ds viz">
+  <div class="images-right">
     <img alt="Airlines" src="{{ "/assets/img/flights.jpg" | prepend: site.baseurl }}" />
   </div>
   <div class="contents">
     <h3>Flights, Airports, and Airlines Data Analysis</h3>
-    <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
-    <p>Look into the Flights, Airports, and Airlines data of 344 cities, 322 airports, and 14 airlines. Discover the secrets to booking the perfect flight ticket.</p>
-    <p><strong>Sample Data Questions:</strong></p>
-    <p>What is the most common cause of cancellations?<br>
-      By visualizing the time-series of airline delays over 2015, can you spot trends?</p>
+    <p><strong>Summary:</strong> Explored trends in flight delays and cancellations across U.S. airports using interactive visualizations. Focused on temporal patterns and cause analysis.</p>
+    <p><strong>Tools:</strong> Python, Plotly, Pandas</p>
     <a class="project-link" href="https://github.com/Djean3/Airports-Flight-Delays-Data-Analysis-">Check it out</a>
   </div>
 </div>
-
-<div class="user-projects project-card ds eda viz">
+<!-- 🧠 College Admissions -->
+<div class="user-projects project-card ds viz">
   <div class="images-left">
     <img alt="colleges" src="{{ "/assets/img/colleges.jpg" | prepend: site.baseurl }}" />
   </div>
   <div class="contents-right">
     <h3>College Admissions Data Science Project</h3>
-    <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
-    <p><strong>Sample Data Questions:</strong></p>
-    <p>Which is more popular: SAT or ACT based on region?<br>
-      Does % of scores submitted change with acceptance rate?<br>
-      What region has the most public vs private schools?<br>
-      What can you tell about graduation rates?</p>
+    <p><strong>Summary:</strong> Analyzed college admissions trends including test score submissions, school types, and graduation rates. Uncovered insights by region and public/private status.</p>
+    <p><strong>Tools:</strong> Python, Plotly, Pandas</p>
     <a class="project-link" href="https://github.com/Djean3/College-admissions-data-science-project">Check it out</a>
   </div>
 </div>
 
-<div class="user-projects project-card ds eda">
-  <div class="images-right">
-    <img alt="fires" src="{{ "/assets/img/fires.jpg" | prepend: site.baseurl }}" />
-  </div>
-  <div class="contents-left">
-    <h3>US Wildfires Data Science Project</h3>
-    <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
-    <p><strong>Sample Data Questions:</strong></p>
-    <p>What trends exist between fire size and duration?<br>
-      Are there regional differences in wildfire causes?<br>
-      Can we detect seasonal fire patterns?</p>
-    <a class="project-link" href="https://github.com/Djean3/US-Wildfires">Check it out</a>
-  </div>
-</div>
 
 <!-- 🧠 JS Filter Script -->
 <script>
   function filterProjectsCheckbox() {
-    const activeFilters = Array.from(document.querySelectorAll('.project-filter:checked')).map(cb => cb.value);
+    const checkboxes = document.querySelectorAll('.project-filter:not([value="all"])');
+    const activeFilters = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
     const cards = document.querySelectorAll('.project-card');
     cards.forEach(card => {
       const hasMatch = activeFilters.some(tag => card.classList.contains(tag));
@@ -73,11 +66,15 @@
     });
   }
 
-  // Add event listeners to checkboxes
+  function toggleAll(allCheckbox) {
+    const checkboxes = document.querySelectorAll('.project-filter:not([value="all"])');
+    checkboxes.forEach(cb => cb.checked = allCheckbox.checked);
+    filterProjectsCheckbox();
+  }
+
   document.querySelectorAll('.project-filter').forEach(cb => {
-    cb.addEventListener('change', filterProjectsCheckbox);
+    if (cb.value !== 'all') cb.addEventListener('change', filterProjectsCheckbox);
   });
 
-  // Initial call
   filterProjectsCheckbox();
 </script>

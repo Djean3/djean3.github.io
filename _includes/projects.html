@@ -1,17 +1,17 @@
 <div class="user-details">
   <h2>Featured Projects</h2>
 </div>
-
-<!-- 🔽 Dropdown Filter -->
+<!-- ✅ Checkboxes go here -->
 <div style="text-align:center; margin-bottom: 20px;">
-  <label for="projectFilter"><strong>Filter by Type:</strong></label>
-  <select id="projectFilter" onchange="filterProjects(this.value)" style="margin-left: 10px; padding: 6px;">
-    <option value="all">All</option>
-    <option value="ds">Data Science</option>
-    <option value="viz">Visualization</option>
-    <option value="eda">Exploratory Data Analysis</option>
-  </select>
+  <strong>Filter by Type:</strong><br><br>
+  <label><input type="checkbox" class="project-filter" value="ds" checked> Data Science</label>
+  <label><input type="checkbox" class="project-filter" value="viz" checked> Machine Learning</label>
+  <label><input type="checkbox" class="project-filter" value="eda" checked> Deep Learning</label>
+  <label><input type="checkbox" class="project-filter" value="eda" checked> Visualizations</label>
 </div>
+
+
+
 
 <!-- ✨ Projects Begin -->
 
@@ -36,7 +36,7 @@
     <img alt="colleges" src="{{ "/assets/img/colleges.jpg" | prepend: site.baseurl }}" />
   </div>
   <div class="contents-right">
-    <h3>College Admissions Data Analysis Project</h3>
+    <h3>College Admissions Data Science Project</h3>
     <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
     <p><strong>Sample Data Questions:</strong></p>
     <p>Which is more popular: SAT or ACT based on region?<br>
@@ -64,14 +64,20 @@
 
 <!-- 🧠 JS Filter Script -->
 <script>
-  function filterProjects(category) {
+  function filterProjectsCheckbox() {
+    const activeFilters = Array.from(document.querySelectorAll('.project-filter:checked')).map(cb => cb.value);
     const cards = document.querySelectorAll('.project-card');
     cards.forEach(card => {
-      if (category === 'all' || card.classList.contains(category)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      const hasMatch = activeFilters.some(tag => card.classList.contains(tag));
+      card.style.display = hasMatch ? 'block' : 'none';
     });
   }
+
+  // Add event listeners to checkboxes
+  document.querySelectorAll('.project-filter').forEach(cb => {
+    cb.addEventListener('change', filterProjectsCheckbox);
+  });
+
+  // Initial call
+  filterProjectsCheckbox();
 </script>

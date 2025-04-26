@@ -1,55 +1,77 @@
 <div class="user-details">
   <h2>Featured Projects</h2>
 </div>
-<div class="user-projects">
+
+<!-- 🔽 Dropdown Filter -->
+<div style="text-align:center; margin-bottom: 20px;">
+  <label for="projectFilter"><strong>Filter by Type:</strong></label>
+  <select id="projectFilter" onchange="filterProjects(this.value)" style="margin-left: 10px; padding: 6px;">
+    <option value="all">All</option>
+    <option value="ds">Data Science</option>
+    <option value="viz">Visualization</option>
+    <option value="eda">Exploratory Data Analysis</option>
+  </select>
+</div>
+
+<!-- ✨ Projects Begin -->
+
+<div class="user-projects project-card ds eda viz">
   <div class="images-right">
-     <p><br></p>
+    <p><br></p>
     <img alt="Airlines" src="{{ "/assets/img/flights.jpg" | prepend: site.baseurl }}" />
   </div>
   <div class="contents">
     <h3>Flights, Airports, and Airlines Data Analysis</h3>
     <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
-    <p>Look into the Flights, Airports, and Airlines data of 344 cities, 322 airports, and 14 airlines.. Discover the secrets to booking the perfect flight ticket..</p>
-<p><strong>Sample Data Questions:</strong> </p>
-<p>What is the most common cause of cancelations in Airlines?<br>
-Weather<br>
-Airline/carrier<br>
-National Air System<br>
-Security<br>
-By Visualizing the time-series of the airlines' average delay over the year(2015), Can you spot any changes over the months/ days?
-</p>
-
- <a class="project-link" href="https://github.com/Djean3/Airports-Flight-Delays-Data-Analysis-">Check it out</a>
-</div>
+    <p>Look into the Flights, Airports, and Airlines data of 344 cities, 322 airports, and 14 airlines. Discover the secrets to booking the perfect flight ticket.</p>
+    <p><strong>Sample Data Questions:</strong></p>
+    <p>What is the most common cause of cancellations?<br>
+      By visualizing the time-series of airline delays over 2015, can you spot trends?</p>
+    <a class="project-link" href="https://github.com/Djean3/Airports-Flight-Delays-Data-Analysis-">Check it out</a>
+  </div>
 </div>
 
-<div class="user-projects">
+<div class="user-projects project-card ds eda viz">
   <div class="images-left">
     <img alt="colleges" src="{{ "/assets/img/colleges.jpg" | prepend: site.baseurl }}" />
   </div>
   <div class="contents-right">
     <h3>College Admissions Data Analysis Project</h3>
     <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
-<p><strong>Sample Data Questions:</strong><br></p>
-<p>Which is more popular: SAT or ACT based off of region?<br>
-Does the % of ACT vs SAT scores submitted change based on the acceptance rates?<br>
-What region has the most Public schools? What region has the most private schools?<br>
-What can you tell about the graduation Rates?
-</p>
-<a class="project-link" href="https://github.com/Djean3/College-admissions-data-science-project">Check it out</a>
-</div>
+    <p><strong>Sample Data Questions:</strong></p>
+    <p>Which is more popular: SAT or ACT based on region?<br>
+      Does % of scores submitted change with acceptance rate?<br>
+      What region has the most public vs private schools?<br>
+      What can you tell about graduation rates?</p>
+    <a class="project-link" href="https://github.com/Djean3/College-admissions-data-science-project">Check it out</a>
+  </div>
 </div>
 
-<div class="user-projects">
+<div class="user-projects project-card ds eda">
   <div class="images-right">
-    <img alt="colleges" src="{{ "/assets/img/fires.jpg" | prepend: site.baseurl }}" />
+    <img alt="fires" src="{{ "/assets/img/fires.jpg" | prepend: site.baseurl }}" />
   </div>
   <div class="contents-left">
     <h3>US Wildfires Data Science Project</h3>
     <p><strong>Answering Data Questions, Using Python and Plotly for interactive visualizations.</strong></p>
-<p><strong>Sample Data Questions:</strong><br></p>
-<p>
-</p>
-<a class="project-link" href="https://github.com/Djean3/US-Wildfires">Check it out</a>
+    <p><strong>Sample Data Questions:</strong></p>
+    <p>What trends exist between fire size and duration?<br>
+      Are there regional differences in wildfire causes?<br>
+      Can we detect seasonal fire patterns?</p>
+    <a class="project-link" href="https://github.com/Djean3/US-Wildfires">Check it out</a>
+  </div>
 </div>
-</div>
+
+<!-- 🧠 JS Filter Script -->
+<script>
+  function filterProjects(category) {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      if (category === 'all' || card.classList.contains(category)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>

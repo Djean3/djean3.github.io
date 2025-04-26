@@ -6,10 +6,10 @@
   <strong>Filter by Type:</strong><br><br>
   <label><input type="checkbox" class="project-filter" value="all" checked onclick="toggleAll(this)"> All</label>
   <label><input type="checkbox" class="project-filter" value="ds" checked> Data Science</label>
-  <label><input type="checkbox" class="project-filter" value="viz" checked> Machine Learning</label>
-  <label><input type="checkbox" class="project-filter" value="eda" checked> Deep Learning</label>
-  <label><input type="checkbox" class="project-filter" value="eda" checked> Visualizations</label>
-</div>
+  <label><input type="checkbox" class="project-filter" value="ml" checked> Machine Learning</label>
+  <label><input type="checkbox" class="project-filter" value="dl" checked> Deep Learning</label>
+  </div>
+
 
 
 
@@ -23,13 +23,13 @@
   <div class="contents-left">
     <h3>US Wildfires Machine Learning Project</h3>
     <p><strong>Summary:</strong> Modeled wildfire characteristics such as size, duration, and regional variation using machine learning techniques to uncover hidden patterns.</p>
-    <p><strong>Tools:</strong> Python, Scikit-learn, Pandas</p>
+    <p><strong>Tools:</strong> Python, Scikit-learn, XGBoost, Pandas</p>
     <a class="project-link" href="https://github.com/Djean3/US-Wildfires">Check it out</a>
   </div>
 </div>
 
 <!-- 🧠 Flights -->
-<div class="user-projects project-card ds viz">
+<div class="user-projects project-card ds">
   <div class="images-right">
     <img alt="Airlines" src="{{ "/assets/img/flights.jpg" | prepend: site.baseurl }}" />
   </div>
@@ -41,7 +41,7 @@
   </div>
 </div>
 <!-- 🧠 College Admissions -->
-<div class="user-projects project-card ds viz">
+<div class="user-projects project-card ds">
   <div class="images-left">
     <img alt="colleges" src="{{ "/assets/img/colleges.jpg" | prepend: site.baseurl }}" />
   </div>
